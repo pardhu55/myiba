@@ -1,0 +1,47 @@
+<!-- <p>customer works!</p> -->
+
+<h1>Welcome {{customer?.customerName}}</h1>
+
+<hr>
+
+<h3>Customer Details</h3>
+
+{{customer | json}}
+
+<hr>
+
+<h3>Account Details</h3>
+
+{{account | json}}
+
+<hr>
+
+<h3>Account Nominees</h3>
+
+{{account?.nominees | json}}
+
+<hr>
+
+<h3>Account Beneficiaries</h3>
+
+{{account?.beneficiaries | json}}
+
+<hr>
+
+<button (click) = "getTransactionsByAccountId()" type="button" class="btn btn-primary">View Transactions</button>
+
+<h3>Transactions</h3>
+
+<p>{{transactions | json}}</p>
+
+<hr>
+
+<button (click) = "TransferMoney()" type="button" class="btn btn-primary">Transfer Money</button>
+
+<hr>
+
+<button (click) = "withdrawMoney()" type="button" class="btn btn-primary">Withdraw Money</button>
+
+<hr>
+
+<button (click) = "depositMoney()" type="button" class="btn btn-primary">Deposit Money</button>
