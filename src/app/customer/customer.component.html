@@ -1,47 +1,185 @@
-<!-- <p>customer works!</p> -->
+<!DOCTYPE html>
+<html>
 
-<h1>Welcome {{customer?.customerName}}</h1>
+<head>
+    <meta charset="utf-8">
+    <title>TinDog</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
 
-<hr>
+    <!-- Fontawesome script -->
+    <script src="https://kit.fontawesome.com/93cf8353b2.js" crossorigin="anonymous"></script>
 
-<h3>Customer Details</h3>
+</head>
 
-{{customer | json}}
+<body>
 
-<hr>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Internet Banking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Account</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Transfer Money</a></li>
+                            <li><a class="dropdown-item" href="#">Withdraw</a></li>
+                            <li><a class="dropdown-item" href="#">Deposit</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-<h3>Account Details</h3>
 
-{{account | json}}
 
-<hr>
+    <div class="WelcomeDetails">
 
-<h3>Account Nominees</h3>
+        <h1>Welcome {{customer?.customerName}}</h1>
+        <h1 (click) = "onAccountDetails()">{{ '₹' + account?.balance}}</h1>
 
-{{account?.nominees | json}}
+    </div>
 
-<hr>
+    <!-- <section id="#moneyActions">
 
-<h3>Account Beneficiaries</h3>
+        <div class="col-md-10 transactionCards">
+            <div class="row ">
+                <div class="col-xl-3 col-lg-6 " routerLink="/login">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Transfer Money</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="text-right">
+                                    <span>Secure Transfer <i class="fas fa-dollar-sign"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-{{account?.beneficiaries | json}}
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Deposit Money</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="text-right">
+                                    <span>Add Money <i class="fas fa-dollar-sign"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<hr>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Withdraw Money</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="text-right">
+                                    <span>Take Amount <i class="fas fa-dollar-sign"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<button (click) = "getTransactionsByAccountId()" type="button" class="btn btn-primary">View Transactions</button>
+    </section> -->
 
-<h3>Transactions</h3>
 
-<p>{{transactions | json}}</p>
+    
 
-<hr>
 
-<button (click) = "TransferMoney()" type="button" class="btn btn-primary">Transfer Money</button>
+    <hr>
 
-<hr>
+    <h3>Customer Details</h3>
 
-<button (click) = "withdrawMoney()" type="button" class="btn btn-primary">Withdraw Money</button>
+    {{customer | json}}
 
-<hr>
+    <hr>
 
-<button (click) = "depositMoney()" type="button" class="btn btn-primary">Deposit Money</button>
+    <h3 (click) = "onAccountDetails()">Account Details</h3>
+
+    {{account | json}}
+
+    <hr>
+
+    <h3>Account Nominees</h3>
+
+    {{account?.nominees | json}}
+
+    <hr>
+
+    <h3 (click) = "onAccountDetails()">Account Beneficiaries</h3>
+
+    {{account?.beneficiaries | json}}
+
+    <hr>
+
+    <button (click)="getTransactionsByAccountId()" type="button" class="btn btn-primary">View Transactions</button>
+
+    <h3>Transactions</h3>
+
+    <p>{{transactions | json}}</p>
+
+    <hr>
+
+    <button (click)="TransferMoney()" type="button" class="btn btn-primary">Transfer Money</button>
+
+    <hr>
+
+    <button (click)="withdrawMoney()" type="button" class="btn btn-primary">Withdraw Money</button>
+
+    <hr>
+
+    <button (click)="depositMoney()" type="button" class="btn btn-primary">Deposit Money</button>
+
+    <!-- Footer -->
+
+    <footer id="footer">
+        <i class="footer-icon fab fa-twitter fa-2x"></i>
+        <i class="footer-icon fab fa-facebook-f fa-2x"></i>
+        <i class="footer-icon fab fa-instagram fa-2x"></i>
+        <i class="footer-icon fas fa-envelope fa-2x"></i>
+        <p class="footer-p">© Copyright 2021 IBA</p>
+
+    </footer>
+
+
+</body>
+
+</html>

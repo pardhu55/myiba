@@ -32,7 +32,7 @@ export class CustomerComponent implements OnInit {
       error: err => console.log('error', err)
     });
 
-    this._customerService.getAccountByid(id).subscribe({
+    this._customerService.getAccountByCustomerId(id).subscribe({
       next: data => this.account = data,
       error: err => console.log('error', err)
     });
@@ -87,6 +87,11 @@ export class CustomerComponent implements OnInit {
 
     // this.router.navigate(["/customer", this.customer.userId]);
 
+  }
+
+  onAccountDetails(){
+
+    this.router.navigate(["/account", this.account.accountId]);
   }
 
 }

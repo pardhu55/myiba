@@ -23,11 +23,18 @@ export class CustomerService {
 
   }
 
-  getAccountByid(id: number): Observable<IAccount>{
+  getAccountByCustomerId(id: number): Observable<IAccount>{
 
     return this.http.get<IAccount>(this._url + "accounts/customerId?customerId=" + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
 
   }
+
+  getAccountByAccountId(id: number){
+
+    return this.http.get<IAccount>(this._url + "account?accountId=" + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
+
+  }
+
 
   getAllTransactionsByAccountId(accountId: number): Observable<ITransaction[]>{
 

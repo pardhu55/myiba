@@ -11,7 +11,7 @@ export interface IAccount{
     dateOfOpening: ɵLocaleDataIndex,
     customer: ICustomer,
     nominees: INominee[],
-    beneficiaries: IBeneficiary
+    beneficiaries: IBeneficiary[]
 
 
     // private long accountId;
