@@ -1,0 +1,146 @@
+
+
+
+<div class="container">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"
+                                class="rounded-circle p-1 bg-primary" width="110">
+                            <div class="mt-3">
+                                <h4>{{customer?.customerName}}</h4>
+                                <p class="text-secondary mb-1">{{ 'balance: ₹' + account?.balance}}</p>
+                                <p class="text-muted font-size-sm">{{'Age: ' + customer?.age}}</p>
+                                <button [routerLink]="['/account', account?.accountId]" class="btn btn-outline-primary">
+                                    My Bank Account</button>
+                                <button (click)="populateDetails()" class="btn btn-primary">Update Details</button>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <hr>
+
+            {{customerForm.value | json}}
+
+            <hr> -->
+
+
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <section id="#CustomerProfileFrom">
+
+
+                        <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="customerForm.get('customerName').invalid && customerForm.get('customerName').touched"
+                                    formControlName="customerName" type="text" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Name</label>
+                                <div
+                                    *ngIf="customerForm.get('customerName').invalid && customerForm.get('customerName').touched">
+                                    <small *ngIf="customerForm.get('customerName').errors?.required"
+                                        class="text-danger">Name
+                                        is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="customerForm.get('emailId').invalid && customerForm.get('emailId').touched"
+                                    formControlName="emailId" type="text" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Email</label>
+                                <div *ngIf="customerForm.get('emailId').invalid && customerForm.get('emailId').touched">
+                                    <small *ngIf="customerForm.get('emailId').errors?.required"
+                                        class="text-danger">Email is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="customerForm.get('phoneNo').invalid && customerForm.get('phoneNo').touched"
+                                    formControlName="phoneNo" type="number" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Phone</label>
+                                <div *ngIf="customerForm.get('phoneNo').invalid && customerForm.get('phoneNo').touched">
+                                    <small *ngIf="customerForm.get('phoneNo').errors?.required"
+                                        class="text-danger">Phone No
+                                        is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <button [disabled]="!customerForm.valid" type="submit"
+                                class="w-100 btn btn-lg btn-dark">Update</button>
+                        </form>
+
+
+
+                        <form [formGroup]="passwordForm" (ngSubmit)="passwordChange()">
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="passwordForm.get('password').invalid && passwordForm.get('password').touched"
+                                    formControlName="password" type="password" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Password</label>
+                                <div
+                                    *ngIf="passwordForm.get('password').invalid && passwordForm.get('password').touched">
+                                    <small *ngIf="passwordForm.get('password').errors?.required"
+                                        class="text-danger">password is
+                                        required</small>
+                                    <small *ngIf="passwordForm.get('password').errors?.minlength"
+                                        class="text-danger">password should have atleast 8
+                                        charaters</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input [class.is-invalid]="passwordForm.get('confirmPassword').invalid && passwordForm.get('confirmPassword').touched"
+                                    formControlName="confirmPassword" type="password" class="form-control"
+                                    id="floatingInput" required>
+                                <small class="text-danger" *ngIf="passwordForm.errors?.misMatch">passwords do not
+                                    match</small>
+                                <label for="floatingInput">Confirm Password</label>
+                                <div
+                                    *ngIf="passwordForm.get('confirmPassword').invalid && passwordForm.get('confirmPassword').touched">
+                                    <small *ngIf="passwordForm.get('confirmPassword').errors?.required"
+                                        class="text-danger">Please enter the new password again
+                                    </small>
+                                </div>
+                            </div>
+
+                            <button [disabled]="!passwordForm.valid" type="submit"
+                                class="w-100 btn btn-lg btn-dark">Change
+                                Password</button>
+
+
+
+                        </form>
+
+
+
+
+                    </section>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

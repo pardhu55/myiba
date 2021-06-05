@@ -23,6 +23,11 @@ export class CustomerService {
 
   }
 
+  updateCustomer(customer: ICustomer){
+
+    return this.http.post(this._url + '/customer', customer).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
+  }
+
   getAccountByCustomerId(id: number): Observable<IAccount>{
 
     return this.http.get<IAccount>(this._url + "accounts/customerId?customerId=" + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));

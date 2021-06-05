@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IAccount } from './Account';
 import { IBeneficiary } from './Beneficiary';
+import { INominee } from './Nominee';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,19 @@ export class AccountService {
 
     return this.http.get<IAccount>(this._url + "account?accountId=" + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
 
+  }
+
+  addNominee(nominee: INominee){
+
+    return this.http.post(this._url + 'nominee', nominee).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
+  }
+
+  removeNominee(id: number){
+
+    console.log('removeNominee', id);
+    
+    
+    return this.http.delete(this._url + 'nominee?nomineeId=' + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
   }
 
   addBeneficiary(beneficiary: IBeneficiary){

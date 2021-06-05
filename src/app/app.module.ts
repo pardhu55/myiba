@@ -10,6 +10,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccountComponent } from './account/account.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AccountComponent } from './account/account.component';
     CustomerComponent,
     WelcomeComponent,
     AdminComponent,
-    AccountComponent
+    AccountComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

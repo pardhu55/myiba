@@ -29,7 +29,7 @@
                         <a class="nav-link active" href="#" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Account</a>
+                        <a class="nav-link" (click)="onAccountDetails()">My Account</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -43,14 +43,13 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Nominees</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Beneficiaries</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+
+                <p>Logout</p>
             </div>
         </div>
     </nav>
@@ -60,15 +59,15 @@
     <div class="WelcomeDetails">
 
         <h1>Welcome {{customer?.customerName}}</h1>
-        <h1 (click) = "onAccountDetails()">{{ '₹' + account?.balance}}</h1>
+        <h1 (click)="onAccountDetails()">{{ '₹' + account?.balance}}</h1>
 
     </div>
 
-    <!-- <section id="#moneyActions">
+    <section id="#moneyActions">
 
         <div class="col-md-10 transactionCards">
             <div class="row ">
-                <div class="col-xl-3 col-lg-6 " routerLink="/login">
+                <div class="col-xl-3 col-lg-6 " data-bs-toggle="modal" data-bs-target="#staticBackdropTransaction">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
@@ -84,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-6" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <div class="card l-bg-green-dark">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
@@ -100,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-6">
+                <div class="col-xl-3 col-lg-6" data-bs-toggle="modal" data-bs-target="#staticBackdropWithdraw">
                     <div class="card l-bg-cherry">
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
@@ -118,21 +117,163 @@
             </div>
         </div>
 
-    </section> -->
+    </section>
 
 
-    
+
+
+
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Launch static backdrop modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Deposit Money</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form [formGroup]="depositForm" (ngSubmit)="depositMoney()">
+                        <div class="form-floating mb-3">
+                            <input
+                                [class.is-invalid]="depositForm.get('amount').invalid && depositForm.get('amount').touched"
+                                formControlName="amount" type="text" class="form-control" id="floatingInput" required>
+                            <label for="floatingInput">Deposit Amount</label>
+                            <div *ngIf="depositForm.get('amount').invalid && depositForm.get('amount').touched">
+                                <small *ngIf="depositForm.get('amount').errors?.required" class="text-danger">Amount is
+                                    required</small>
+                            </div>
+                        </div>
+                        <button type="submit" [disabled]="!depositForm.valid" class="btn btn-primary">Deposit</button>
+                        <br>
+                        <small class="success" *ngIf="depositStatus">Deposit Successful</small>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdropTransaction" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Transfer Money</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form [formGroup]="transferForm" (ngSubmit)="transferMoney()">
+                        <div class="form-floating mb-3">
+                            <input
+                                [class.is-invalid]="transferForm.get('receiverAccountId').invalid && transferForm.get('receiverAccountId').touched"
+                                formControlName="receiverAccountId" type="text" class="form-control" id="floatingInput"
+                                required>
+                            <label for="floatingInput">Receiver Account Id</label>
+                            <div
+                                *ngIf="transferForm.get('receiverAccountId').invalid && transferForm.get('receiverAccountId').touched">
+                                <small *ngIf="transferForm.get('receiverAccountId').errors?.required"
+                                    class="text-danger">Receiver Account Id is
+                                    required</small>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input
+                                [class.is-invalid]="transferForm.get('amount').invalid && transferForm.get('amount').touched"
+                                formControlName="amount" type="text" class="form-control" id="floatingInput" required>
+                            <label for="floatingInput">Transfer Amount</label>
+                            <div *ngIf="transferForm.get('amount').invalid && transferForm.get('amount').touched">
+                                <small *ngIf="transferForm.get('amount').errors?.required" class="text-danger">Amount is
+                                    required</small>
+                            </div>
+                        </div>
+                        <button type="submit" [disabled]="!transferForm.valid" class="btn btn-primary">Transfer</button>
+                        <br>
+                        <small class="success" *ngIf="transferStatus">Transfer Successful</small>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdropWithdraw" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Withdraw Money</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form [formGroup]="withdrawForm" (ngSubmit)="withdrawMoney()">
+                        <div class="form-floating mb-3">
+                            <input
+                                [class.is-invalid]="withdrawForm.get('amount').invalid && withdrawForm.get('amount').touched"
+                                formControlName="amount" type="text" class="form-control" id="floatingInput" required>
+                            <label for="floatingInput">Withdraw Amount</label>
+                            <div *ngIf="withdrawForm.get('amount').invalid && withdrawForm.get('amount').touched">
+                                <small *ngIf="withdrawForm.get('amount').errors?.required" class="text-danger">Amount is
+                                    required</small>
+                            </div>
+                        </div>
+                        <button type="submit" [disabled]="!withdrawForm.valid" class="btn btn-primary">Withdraw</button>
+                        <br>
+                        <small class="success" *ngIf="withdrawStatus">Withdraw Successful</small>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <hr>
 
-    <h3>Customer Details</h3>
+    <h3 (click)="onCustomerDetails()">Customer Details</h3>
 
     {{customer | json}}
 
     <hr>
 
-    <h3 (click) = "onAccountDetails()">Account Details</h3>
+    <h3 (click)="onAccountDetails()">Account Details</h3>
 
     {{account | json}}
 
@@ -144,7 +285,7 @@
 
     <hr>
 
-    <h3 (click) = "onAccountDetails()">Account Beneficiaries</h3>
+    <h3 (click)="onAccountDetails()">Account Beneficiaries</h3>
 
     {{account?.beneficiaries | json}}
 
@@ -158,7 +299,7 @@
 
     <hr>
 
-    <button (click)="TransferMoney()" type="button" class="btn btn-primary">Transfer Money</button>
+    <button (click)="transferMoney()" type="button" class="btn btn-primary">Transfer Money</button>
 
     <hr>
 

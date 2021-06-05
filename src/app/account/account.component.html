@@ -4,6 +4,146 @@
 
 <br>
 
+<!-- --------------------------------------------------------------- -->
+
+
+<section id="#Nominees">
+
+    <h1>Nominees</h1>
+    
+    <div *ngFor = "let n of account?.nominees">
+    
+    
+        <p>{{n | json}} </p>
+    
+        <button (click) = "updateNominee(n)" class="btn btn-lg btn-dark">update</button>
+    
+        <button (click) = "removeNominee(n)" class="btn btn-lg btn-dark">delete</button>
+    
+    
+    </div>
+
+    <hr>
+    
+    {{nomineeForm.value | json}}
+
+    <hr>
+    
+    <form [formGroup]="nomineeForm" (ngSubmit)="addNominee()">
+        <div class="form-floating mb-3">
+            <!-- <label>User-ID</label> -->
+            <input [class.is-invalid]="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched"
+                formControlName="nomineeId" type="number" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">nominee-ID</label>
+            <div *ngIf="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched">
+                <small *ngIf="nomineeForm.get('nomineeId').errors?.required" class="text-danger">User-Id is
+                    required</small>
+            </div>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <!-- <label>User-ID</label> -->
+            <input [class.is-invalid]="nomineeForm.get('name').invalid && nomineeForm.get('name').touched"
+                formControlName="name" type="text" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Nominee Name</label>
+            <div *ngIf="nomineeForm.get('name').invalid && nomineeForm.get('name').touched">
+                <small *ngIf="nomineeForm.get('name').errors?.required" class="text-danger">Name is
+                    required</small>
+            </div>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <!-- <label>User-ID</label> -->
+            <input [class.is-invalid]="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched"
+                formControlName="govtId" type="text" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Govt ID</label>
+            <div *ngIf="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched">
+                <small *ngIf="nomineeForm.get('govtId').errors?.required" class="text-danger">Govt ID is
+                    required</small>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <!-- <label>User-ID</label> -->
+            <input [class.is-invalid]="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched"
+                formControlName="govtIdType" type="text" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Govt ID Type</label>
+            <div *ngIf="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched">
+                <small *ngIf="nomineeForm.get('govtIdType').errors?.required" class="text-danger">ID Type is
+                    required</small>
+            </div>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <!-- <label>User-ID</label> -->
+            <input [class.is-invalid]="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched"
+                formControlName="phoneNo" type="text" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Phone No</label>
+            <div *ngIf="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched">
+                <small *ngIf="nomineeForm.get('phoneNo').errors?.required" class="text-danger">Phone No is
+                    required</small>
+            </div>
+        </div>
+    
+        <!-- <div class="form-floating mb-3">
+            <input [class.is-invalid]="beneficiaryForm.get('accountType').invalid && beneficiaryForm.get('accountType').touched"
+                formControlName="accountType" type="text" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">IFSC</label>
+            <div *ngIf="beneficiaryForm.get('accountType').invalid && loginForm.get('accountType').touched">
+                <small *ngIf="beneficiaryForm.get('accountType').errors?.required" class="text-danger">Account Type is
+                    required</small>
+            </div>
+        </div> -->
+    
+        <div class="mb-3">
+            <div class="form-check">
+                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="MOTHER">
+                <label class="form-check-label" for="exampleRadios1">
+                    MOTHER
+                </label>
+            </div>
+            <div class="form-check">
+                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="FATHER">
+                <label class="form-check-label" for="exampleRadios2">
+                    FATHER
+                </label>
+            </div>
+            <div class="form-check">
+                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="DAUGHTER">
+                <label class="form-check-label" for="exampleRadios1">
+                    DAUGHTER
+                </label>
+            </div>
+            <div class="form-check">
+                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="SON">
+                <label class="form-check-label" for="exampleRadios2">
+                    SON
+                </label>
+            </div>
+            <div class="form-check">
+                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="SPOUSE">
+                <label class="form-check-label" for="exampleRadios2">
+                    SPOUSE
+                </label>
+            </div>
+        </div>
+        
+    
+        <button [disabled]="!nomineeForm.valid" type="submit" class="w-100 btn btn-lg btn-dark">Add/Update nominee</button>
+    
+    </form>
+    
+    </section>
+
+    
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------- -->
 
 <section id="#Beneficiaries">
 
@@ -99,3 +239,6 @@
 </form>
 
 </section>
+
+
+

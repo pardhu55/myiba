@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAccount } from '../Account';
 import { ICustomer } from '../Customer';
@@ -19,13 +20,23 @@ export class CustomerComponent implements OnInit {
   customerAccountId!: number;
   transactions!: ITransaction[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private _customerService: CustomerService) { }
+  depositForm: any;
+  depositStatus: boolean = false;
+
+  transferForm: any;
+  transferStatus: boolean = false;
+
+  withdrawForm: any;
+  withdrawStatus: boolean = false;
+
+  constructor(private router: Router, private route: ActivatedRoute, private _customerService: CustomerService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
 
     const id = Number(this.route.snapshot.paramMap.get("id"));
     console.log(id);
     this.customerId = id;
+    
 
     this._customerService.getCustomer(id).subscribe({
       next: data => this.customer = data,
@@ -45,6 +56,23 @@ export class CustomerComponent implements OnInit {
     //   error: err => console.log('error', err)
     // });
 
+    this.depositForm = this.fb.group({
+
+      amount: ['1000', Validators.required]
+    });
+
+    this.transferForm = this.fb.group({
+
+      receiverAccountId: ['', Validators.required],
+      amount: ['1000', Validators.required]
+    });
+
+    this.withdrawForm = this.fb.group({
+
+      amount: ['1000', Validators.required]
+
+    });
+
   }
 
 
@@ -58,10 +86,13 @@ export class CustomerComponent implements OnInit {
   }
 
 
-  TransferMoney() {
+  transferMoney(){
 
-    this._customerService.transferMoney(this.account.accountId, 33, 9, this.customer.customerName, this.customer.password).subscribe(
-      data => console.log('Success!', data),
+    console.log(this.transferForm.value.receiverAccountId);
+    console.log(this.transferForm.value.amount);
+
+    this._customerService.transferMoney(this.account.accountId, this.transferForm.value.receiverAccountId, this.transferForm.value.amount, this.customer.customerName, this.customer.password).subscribe(
+      data => console.log(this.transferStatus = true, data),
       error => console.log('Error!', error)
     );
 
@@ -71,8 +102,11 @@ export class CustomerComponent implements OnInit {
 
   withdrawMoney() {
 
-    this._customerService.withdrawMoney(this.account.accountId, 9, this.customer.customerName, this.customer.password).subscribe(
-      data => console.log('Success!', data),
+    console.log(this.withdrawForm.value.amount);
+    
+
+    this._customerService.withdrawMoney(this.account.accountId, this.withdrawForm.value.amount, this.customer.customerName, this.customer.password).subscribe(
+      data => console.log(this.withdrawStatus = true, data),
       error => console.log('Error!', error)
     );
 
@@ -80,12 +114,19 @@ export class CustomerComponent implements OnInit {
 
   depositMoney() {
 
-    this._customerService.depositMoney(this.account.accountId, 1).subscribe(
-      data => console.log('Success!', data),
+    console.log(this.depositForm.value.amount);
+    
+
+    this._customerService.depositMoney(this.account.accountId, this.depositForm.value.amount).subscribe(
+      data => console.log(this.depositStatus = true, data),
       error => console.log('Error!', error)
     );
 
-    // this.router.navigate(["/customer", this.customer.userId]);
+    console.log(this.depositStatus);
+    
+    
+
+    this.router.navigate(["/customer", this.customer.userId]);
 
   }
 
@@ -93,5 +134,11 @@ export class CustomerComponent implements OnInit {
 
     this.router.navigate(["/account", this.account.accountId]);
   }
+
+  onCustomerDetails(){
+
+    this.router.navigate(["/profile", this.customer.userId]);
+  }
+
 
 }
