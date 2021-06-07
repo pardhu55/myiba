@@ -179,5 +179,11 @@ export class CustomerComponent implements OnInit {
     window.location.reload();
    }
 
+   listAllCustomers(){
+    this._customerService.listAllCustomers().subscribe(
+      data => console.log('Success!', data),
+      error => console.log('Error!', error)
+    );
+  }
 
 }

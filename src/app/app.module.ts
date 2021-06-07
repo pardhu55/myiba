@@ -11,6 +11,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccountComponent } from './account/account.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminDetailsComponent } from './admin/admin-details/admin-details.component';
+import { CustomerViewComponent } from './admin/customer-view/customer-view.component';
+import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
+import { AdminCusTranComponent } from './admin/admin-cus-tran/admin-cus-tran.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { ProfileComponent } from './profile/profile.component';
     WelcomeComponent,
     AdminComponent,
     AccountComponent,
+    AdminDetailsComponent,
+    CustomerViewComponent,
+    AdminActionsComponent,
+    AdminCusTranComponent,
     ProfileComponent
   ],
   imports: [

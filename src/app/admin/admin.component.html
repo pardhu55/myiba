@@ -1,1 +1,108 @@
-<p>admin works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body> 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  
+  <!-- ---------------print------------------- -->
+  <!-- <button class="btn btn-outline-success" (click)="listAllAdmins()">click</button> -->
+  <!-- <button class="btn btn-outline-success" (click)="onCustomerDetails()">customer details</button> -->
+
+ <!-- -----------------x-----------------------x-----------------------x----------- -->
+ <!-- <div class="position-absolute top-0 start-0 translate-middle"></div> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: rgb(81, 18, 199);">   
+  <div class="container">
+    <a class="navbar-brand" href="#">ADMIN</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" value="Go back!" onclick="history.back()">Home</a>
+        </li>  
+
+  
+         
+        <li class="nav-item dropdown"  style="right: 0; left: 1000px;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">                                     
+            <i class="bi bi-person-circle"></i>             
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">            
+            <li><a class="dropdown-item" title="Log Out" class="loginlogoutlink-logout" href="?action=logout">Log Out</a></li>           
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <!-- -------------------------------------------------------------------------- -->
+ 
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<div class="container">  
+    <div class="row ">
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fa fa-code-fork"></i>        
+        <a (click)="listAllAdmins()"><span class="count-name">Admins</span></a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <i class="fa fa-users"></i>       
+        <a (click)="onCustomerDetails()"><span class="count-name">Customers</span></a>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <i class="fa fa-ticket"></i>
+        <span class="count-numbers">iba.@gmail.com</span>
+        <span class="count-name">Email</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fa fa-database"></i>
+        <span class="count-numbers">(040)-23456789</span>        
+        <span class="count-name">Help Line</span>
+      </div>
+    </div>
+
+   
+  </div>
+</div>
+
+<!-- -------------------------------------- -->
+
+
+
+
+</body>
+</html>
+
+  
+
+
+
+
+
+
+
+
+

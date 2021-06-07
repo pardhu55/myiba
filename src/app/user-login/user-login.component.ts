@@ -14,6 +14,7 @@ export class UserLoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private _userService: UserService, private router: Router) { }
 
   loginForm: any;
+  loginError: boolean = false;
 
   ngOnInit(): void {
 
@@ -28,12 +29,11 @@ export class UserLoginComponent implements OnInit {
   onSubmit() {
     console.log('onSubmit ran');
 
-    let receivedUser: IUser;
-    let receivedError;
+    
 
     this._userService.signIn(this.loginForm.value).subscribe({
       next: data => this.checkUserAndRoute(data),
-      error: err => console.log('error', err)
+      error: err => console.log('error', this.loginError = true)
     });
 
 

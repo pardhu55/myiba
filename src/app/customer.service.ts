@@ -11,9 +11,20 @@ import { ITransaction } from './Transaction';
 })
 export class CustomerService {
 
-  private _url: string = 'http://localhost:8080/';
+  private _url: string = 'http://localhost:8083/';
 
   constructor(private http: HttpClient) { }
+
+  deleteCustomer(id: number): Observable<ICustomer>{
+   
+    return this.http.delete<ICustomer>(this._url + "customer?userId=" + id).pipe(tap(data => console.log(data)), catchError(this.errorHandler));
+
+  }
+ 
+  listAllCustomers(): Observable<ICustomer[]>{
+    return this.http.get<ICustomer[]>(this._url + "customers").pipe(tap(data => console.log(data)), catchError(this.errorHandler));
+
+  }
 
 
   getCustomer(id: number): Observable<ICustomer>{

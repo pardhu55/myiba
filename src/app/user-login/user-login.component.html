@@ -88,7 +88,7 @@
                     </label>
                 </div>
             </div>
-
+            <small *ngIf="loginError" class="text-danger">Invalid User Details, please check and try again</small>
             <button [disabled]="!loginForm.valid" type="submit" class="w-100 btn btn-lg btn-dark">Sign-in</button>
 
         </form>

@@ -29,15 +29,6 @@ export class AccountComponent implements OnInit {
       error: err => console.log('error', err)
     });
 
-
-    // console.log(this.account.beneficiaries);
-
-    // nomineeId: number,
-    // name: string,
-    // govtId: string,
-    // phoneNo: string,
-    // relation: IRelation
-
     this.nomineeForm = this.fb.group({
 
       nomineeId: [ , Validators.required],

@@ -1,0 +1,74 @@
+<h6>Transaction Details: </h6>
+<!-- <a href="http://localhost:4200/admin-custran/31" download="transaction">Download</a> -->
+
+<div class="row container col-lg-6" >
+    <div class="col-12">
+        <div class="card card-margin">
+            <div class="card-body">
+                <div class="row search-body">
+                    <div class="col-lg-12">
+                        <div class="search-result">
+                            <div class="result-body">
+                                <div class="table-responsive">
+                                    <table class="table widget-26">
+
+                                        <thead>
+                                            <td>
+                                                Transaction Remarks
+                                            </td>
+                                            <td>
+                                                Date and Time
+                                            </td>
+                                            <td>
+                                                Amount
+                                            </td>
+                                            <td>
+                                                Type
+                                            </td>
+                                        </thead>
+                                        <tbody >
+                                            <tr  *ngFor = "let transaction of transactions" [class.success]="checkTransactionType(transaction)" [class.failed]="!checkTransactionType(transaction)">
+                                                <td>
+                                                    <div class="widget-26-job-title">
+                                                        <a href="#">{{transaction.transactionRemarks}}</a>
+                                                        <p class="m-0"><span class="text-muted time">{{transaction.transactionStatus}}
+                                                                </span></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="widget-26-job-info">
+                                                        <p class="type m-0">{{getDate(transaction.dateTime)}}</p>
+                                                        <p class="text-muted m-0">at <span class="location">{{getTime(transaction.dateTime)}}</span></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="widget-26-job-salary">{{'₹' +transaction.amount}}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="widget-26-job-category bg-soft-base">
+                                                        <i *ngIf = "checkTransactionType(transaction)" class="indicator bg-success"></i>
+                                                        <i  *ngIf = "!checkTransactionType(transaction)" class="indicator bg-danger"></i>
+                                                        <span *ngIf = "checkTransactionType(transaction)">CREDIT</span>
+                                                        <span *ngIf = "!checkTransactionType(transaction)">DEBIT</span>
+                                                    </div>
+                                                </td>
+                                                
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<form>
+    <input class="btn btn-outline-info" type="button" value="Go back!" onclick="history.back()" style="margin-left: 10px">
+</form>
