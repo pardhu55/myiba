@@ -1,34 +1,24 @@
  body{
     /* font-family: 'Montserrat', sans-serif;
-    font-weight: 300; */
+     */
     color: black;
-    background-color:  white;
+    background-color:  #ecf3f6;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    /* display: inline-block; */
+    
   }
-  
- /* h1, h2, h3, h4, h5, h6{
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  
-  p{
-    color: #8f8f8f;
-  }
-  
+ h1, h2, h3,h5, h4, h6{
+  display: inline-block;
+}
 
-  .big-heading{
-    font-size: 3.5rem;
-    line-height: 1.5;
-    font-weight: 900;
-  }
+h3{
+  color: brown;
+}
   
-  .section-heading{
-    font-weight: bold;
-    font-size: 3rem;
-    line-height: 1.5;
-  }
   
   .container-fluid{
-    padding: 3% 15%;
+    padding: 1% 3%;
   }
 
   .navbar-brand{
@@ -45,134 +35,24 @@
     padding: 0 18px;
   }
   
-  .nav-link{
-    font-size: 1.2rem;
-    font-family: "Montserrat";
-  }
   
-  #title{
+  /* #title{
     background-color: black;
     color: #fff;
     text-align: left;
-  }
-  
+  } */
 
-  .download-btn{
-    margin: 5% 3% 5% 0;
-  }
-  
+  #profileIcon{
 
-  .title-img{
-    width: 60%;
-    transform: rotate(25deg);
-    position: absolute;
-    right: 27%;
+    padding: 0 50px;
+    size: 20px;
   }
-  
-
-  #features{
-    padding: 7% 10%;
-    background-color: #fff;
-    position: relative;
-  }
-  
-  .features-icon{
-    color: #ef8172;
-    margin-bottom: 1rem;
-  }
-  
-  .features-icon:hover{
-    color: #ff4c68;
-  }
-  
-  .feature-title{
-    font-weight: bold;
-  }
-  
-  .features-description{
-    padding: 0 12%;
-  }
-  
-
-  #testimonials{
-    background-color: #ff4c68;
-    color: #fff;
-  }
-  
-  .testimonial-text{
-    font-weight: bold;
-    font-size: 3rem;
-    line-height: 1.5;
-  }
-  
-  .testimonial-image{
-    width: 15%;
-    margin: 20px;
-    border-radius: 100%;
-    height: 165px;
-  }
-  
-  .carousel-item{
-    padding: 7% 15%;
-  }
-  
-
-  #press{
-    background-color: #ff4c68;
-    padding-bottom: 3%;
-  }
-  
-  .press-logo{
-    width: 15%;
-    margin: 20px 20px 50px;
-  }
-  
-
-
-  #pricing{
-    padding: 100px;
-  }
-  
-  .pricing-breed-heading{
-    font-weight: bold;
-  }
-  
-  .pricing-text{
-    font-weight: bold;
-    font-size: 3rem;
-    line-height: 1.5;
-  }
-  
-  .pricing-cards{
-    padding: 3%;
-  }
-  
-  @media (max-width: 1028px) {
-  .title-img{
-    position: static;
-    transform: rotate(0);
-  }
-  
-  #title{
-    text-align: center;
-  }
-  }
-  
-
-
-  
-  #cta{
-    background-color: #ff4c68;
-    padding: 7% 15%;
-    color: #fff;
-  }
-  
-
 
 
 
   #footer{
-    background-color: #fff;
+    text-align: center;
+    background-color: #d9bf77;
     padding: 5% 0;
   }
   
@@ -182,17 +62,140 @@
   
   .footer-p{
     padding: 30px 0 0;
-  }*/
+  }
 
 
+
+
+/* navbar */
 
   .navbar{
 
-    padding: 1% ;
+    padding: 40px;
     color: red;
-    background-color: #00043c;
+    background-color: #212121;
+    font-family: 'Montserrat', sans-serif;
+    font-size: larger;
+    font-weight: 300;
 
   }
+
+
+  .navbar-brand{
+
+    /* padding-right: 20px; */
+    color: #ffde7d;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 3rem;
+
+  }
+
+  .nav-link{
+
+    color: #f9f7f7;
+    font-size: 1.5rem;
+    
+  }
+
+
+  .nav-link:hover{
+    color: #0d7377;
+  }
+
+  /* welcome title */
+
+  .WelcomeDetails{
+
+    color: #0a504a;
+    text-align: center;
+    height: 365px;
+    display:inline-block;
+    padding: 10px 30px;
+
+    font-weight: 300;
+
+  
+  }
+
+  #balanceTitle{
+
+    font-family: 'Hind Siliguri', sans-serif;
+    width: 100%;
+    color: #61b15a;
+    font-size: 6rem;
+  }
+
+  #welcomeTitle{
+
+    width: 100%;
+    font-size: 4rem;
+    /* padding-bottom: 10px; */
+  }
+
+  #customerName{
+    color: #511281;
+    
+  }
+
+
+  #moneyActions{
+
+    display: inline-block;
+    position: relative;
+    left: 100px;
+    bottom: 90px;
+  }
+
+  #transactionHeading{
+
+    padding-bottom: 30px;
+    font-size: 5rem;
+    color: #d9bf77;
+  }
+
+  .transactionCards{
+
+    padding: 30px 0;
+
+    
+  
+  
+  }
+
+  .innercard{
+
+    display: inline-block;
+  }
+
+
+  .accountCard{
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    /* position: relative; */
+    padding: 30px;
+    margin: 30px;
+    /* margin-bottom: 30px; */
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+  }
+
+  .accountCard:hover{
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.363);
+}
+
+#accountSection.h3,h6{
+  width: 100%;
+  padding:  15px 0;
+}
+
+ #transactionHeading{
+
+  font-size: 2rem;
+  padding: 10px 0 20px 0;
+
+ }
+  
   
 
 
@@ -265,26 +268,192 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
 }
 
-.transactionCards{
-
-  position:relative;
-  left: 600px;
-
-  padding: 30px 0;
 
 
-}
-
-
-.WelcomeDetails{
-
-  position: relative;
-
-}
 
 .success{
   color: green;
+  background-color: #dfeeea;
 }
+
+.failed{
+  background-color: #f6e6e4;
+}
+
+
+
+
+
+
+
+
+
+
+.widget-26 .widget-26-job-title {
+min-width: 200px;
+}
+
+.widget-26 .widget-26-job-title a {
+font-weight: 400;
+font-size: 0.875rem;
+color: #3c4142;
+line-height: 1.5;
+}
+
+.widget-26 .widget-26-job-title a:hover {
+color: #68CBD7;
+text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .employer-name {
+margin: 0;
+line-height: 1.5;
+font-weight: 400;
+color: #3c4142;
+font-size: 0.8125rem;
+color: #3c4142;
+}
+
+.widget-26 .widget-26-job-title .employer-name:hover {
+color: #68CBD7;
+text-decoration: none;
+}
+
+.widget-26 .widget-26-job-title .time {
+font-size: 12px;
+font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info {
+min-width: 100px;
+font-weight: 400;
+}
+
+.widget-26 .widget-26-job-info p {
+line-height: 1.5;
+color: #3c4142;
+font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-info .location {
+color: #3c4142;
+}
+
+.widget-26 .widget-26-job-salary {
+min-width: 70px;
+font-weight: 400;
+color: #3c4142;
+font-size: 0.8125rem;
+}
+
+.widget-26 .widget-26-job-category {
+padding: .5rem;
+display: inline-flex;
+white-space: nowrap;
+border-radius: 15px;
+}
+
+.widget-26 .widget-26-job-category .indicator {
+width: 13px;
+height: 13px;
+margin-right: .5rem;
+float: left;
+border-radius: 50%;
+}
+
+.widget-26 .widget-26-job-category span {
+font-size: 0.8125rem;
+color: #3c4142;
+font-weight: 600;
+}
+
+
+.bg-soft-base {
+background-color: #e1f5f7;
+}
+.bg-soft-warning {
+  background-color: #fff4e1;
+}
+.bg-soft-success {
+  background-color: #d1f6f2;
+}
+.bg-soft-danger {
+  background-color: #fedce0;
+}
+.bg-soft-info {
+  background-color: #d7efff;
+}
+
+
+
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+
+@media (min-width: 992px){
+.col-lg-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+}
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+.card {
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.card {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid #e6e4e9;
+  border-radius: 8px;
+}
+
+
+#transactionList {
+
+  position: relative;
+  left: 685px;
+  bottom: 418px;
+}
+
+.transactionListHead{
+
+
+  background-color: #ffde7d;
+
+  padding: 20px 0 30px;
+}
+
+.transactionHeadLinks{
+
+  padding: 20px 30px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:larger;
+  
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,12 @@
 body{
-    background: #f7f7ff;
-    margin-top:20px;
+    /* background: #f7f7ff;
+    margin-top:20px; */
+
+        /* text-align: center; */
+        background-color:  #ecf3f6;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 300;
+    
 }
 .card {
     position: relative;
@@ -18,3 +24,67 @@ body{
 .me-2 {
     margin-right: .5rem!important;
 }
+
+
+
+
+#customerCard{
+
+    position: relative;
+    right: 100px;
+
+    margin-top: 50px;
+    padding: 25px 0;
+}
+
+#detailsCard{
+
+    width: 235%;
+    position: relative;
+
+    left: 350px;
+    bottom: 420px;
+}
+
+#passwordCard{
+
+    width: 235%;
+    position: relative;
+
+    left: 350px;
+    bottom: 420px;
+}
+
+
+.navbar{
+
+    padding: 40px;
+    color: red;
+    background-color: #212121;
+    font-family: 'Montserrat', sans-serif;
+    font-size: larger;
+    font-weight: 300;
+
+  }
+
+
+  .navbar-brand{
+
+    /* padding-right: 20px; */
+    color: #ffde7d;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 3rem;
+
+  }
+
+  .nav-link{
+
+    color: #f9f7f7;
+    font-size: 1.5rem;
+    
+  }
+
+
+  .nav-link:hover{
+    color: #0d7377;
+  }

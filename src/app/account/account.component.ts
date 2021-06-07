@@ -40,12 +40,12 @@ export class AccountComponent implements OnInit {
 
     this.nomineeForm = this.fb.group({
 
-      nomineeId: [4, Validators.required],
-      name: ['Judy Geller', Validators.required],
-      govtId: ["Adhaar Card", Validators.required],
-      govtIdType: ["e-Document", Validators.required],
-      phoneNo: ["8743485643", Validators.required],
-      relation: ['MOTHER', Validators.required]
+      nomineeId: [ , Validators.required],
+      name: ['', Validators.required],
+      govtId: ['', Validators.required],
+      govtIdType: ['', Validators.required],
+      phoneNo: ['', Validators.required],
+      relation: ['', Validators.required]
 
 
     });
@@ -55,11 +55,11 @@ export class AccountComponent implements OnInit {
 
     this.beneficiaryForm = this.fb.group({
 
-      beneficiaryId: [2, Validators.required],
-      beneficiaryName: ['fsdfsdf', Validators.required],
-      beneficiaryAccNo: [23435345, Validators.required],
-      accountType: ["CURRENT", Validators.required],
-      ifsc: ['dfgdsfg', Validators.required]
+      beneficiaryId: [, Validators.required],
+      beneficiaryName: ['', Validators.required],
+      beneficiaryAccNo: [, Validators.required],
+      accountType: ['', Validators.required],
+      ifsc: ['', Validators.required]
 
 
     });
@@ -230,6 +230,10 @@ export class AccountComponent implements OnInit {
   }
 
 
+  reloadCurrentPage() {
+    window.location.reload();
+   }
+
 
 
   // getApiData(){
@@ -237,7 +241,15 @@ export class AccountComponent implements OnInit {
   //   this.beneficiaryForm.setValue(this.account.beneficiaries[0]);
   // }
 
+checkGender(nominee: INominee):boolean{
 
+  if(nominee.relation.toString() === 'MOTHER' || nominee.relation.toString() === 'DAUGHTER' || nominee.relation.toString() === 'SPOUSE'){
+    return true;
+  }else{
+    return false;
+  }
+
+}
 
 
 

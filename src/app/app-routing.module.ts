@@ -10,6 +10,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'login', component: UserLoginComponent},
+  {path: 'account/:id/#account', component: AccountComponent},
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'customer/:id', component: CustomerComponent},
   {path: 'account/:id', component: AccountComponent},

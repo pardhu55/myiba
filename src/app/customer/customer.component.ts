@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAccount } from '../Account';
@@ -17,6 +17,7 @@ export class CustomerComponent implements OnInit {
   customerId!: number;
   customer!: ICustomer;
   account!: IAccount;
+
   customerAccountId!: number;
   transactions!: ITransaction[];
 
@@ -48,6 +49,8 @@ export class CustomerComponent implements OnInit {
       error: err => console.log('error', err)
     });
 
+
+
     //should complete
     // const promise2 = doSomething().then(successCallback, failureCallback);
     
@@ -55,6 +58,8 @@ export class CustomerComponent implements OnInit {
     //   next: data => this.transactions = data,
     //   error: err => console.log('error', err)
     // });
+
+
 
     this.depositForm = this.fb.group({
 
@@ -79,9 +84,10 @@ export class CustomerComponent implements OnInit {
   getTransactionsByAccountId(){
 
     this._customerService.getAllTransactionsByAccountId(this.account.accountId).subscribe({
-      next: data => this.transactions = data,
+      next: data => this.transactions = data.reverse(),
       error: err => console.log('error', err)
     });
+
 
   }
 
@@ -139,6 +145,39 @@ export class CustomerComponent implements OnInit {
 
     this.router.navigate(["/profile", this.customer.userId]);
   }
+
+
+  checkTransactionType(transaction: ITransaction){
+
+
+    if(transaction.transactionType.toString() === 'CREDIT'){
+
+      console.log(true);
+      return true;
+      
+    }else{
+      console.log(false);
+      return false;
+    }
+
+  }
+
+
+  getDate(dateTime: any){
+
+    return dateTime.toString().substr(0,10);
+
+  }
+
+  getTime(dateTime: any){
+
+    return dateTime.toString().substr(11,17);
+
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 
 
 }

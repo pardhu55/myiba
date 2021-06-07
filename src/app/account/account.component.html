@@ -1,141 +1,72 @@
-<p>account works!</p>
+<!-- <p>account works!</p>
 
 {{account | json}}
 
 <br>
+ -->
 
 <!-- --------------------------------------------------------------- -->
 
+<head>
 
-<section id="#Nominees">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+</head>
 
-    <h1>Nominees</h1>
-    
-    <div *ngFor = "let n of account?.nominees">
-    
-    
-        <p>{{n | json}} </p>
-    
-        <button (click) = "updateNominee(n)" class="btn btn-lg btn-dark">update</button>
-    
-        <button (click) = "removeNominee(n)" class="btn btn-lg btn-dark">delete</button>
-    
-    
-    </div>
 
-    <hr>
-    
-    {{nomineeForm.value | json}}
+<body>
 
-    <hr>
-    
-    <form [formGroup]="nomineeForm" (ngSubmit)="addNominee()">
-        <div class="form-floating mb-3">
-            <!-- <label>User-ID</label> -->
-            <input [class.is-invalid]="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched"
-                formControlName="nomineeId" type="number" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">nominee-ID</label>
-            <div *ngIf="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched">
-                <small *ngIf="nomineeForm.get('nomineeId').errors?.required" class="text-danger">User-Id is
-                    required</small>
-            </div>
+
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand">Internet Banking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
-    
-        <div class="form-floating mb-3">
-            <!-- <label>User-ID</label> -->
-            <input [class.is-invalid]="nomineeForm.get('name').invalid && nomineeForm.get('name').touched"
-                formControlName="name" type="text" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">Nominee Name</label>
-            <div *ngIf="nomineeForm.get('name').invalid && nomineeForm.get('name').touched">
-                <small *ngIf="nomineeForm.get('name').errors?.required" class="text-danger">Name is
-                    required</small>
-            </div>
-        </div>
-    
-        <div class="form-floating mb-3">
-            <!-- <label>User-ID</label> -->
-            <input [class.is-invalid]="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched"
-                formControlName="govtId" type="text" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">Govt ID</label>
-            <div *ngIf="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched">
-                <small *ngIf="nomineeForm.get('govtId').errors?.required" class="text-danger">Govt ID is
-                    required</small>
-            </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container card" id="account">
+
+        <div>
+            <h1 id="accountSummary">Account Summary</h1>
+
         </div>
 
-        <div class="form-floating mb-3">
-            <!-- <label>User-ID</label> -->
-            <input [class.is-invalid]="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched"
-                formControlName="govtIdType" type="text" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">Govt ID Type</label>
-            <div *ngIf="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched">
-                <small *ngIf="nomineeForm.get('govtIdType').errors?.required" class="text-danger">ID Type is
-                    required</small>
-            </div>
-        </div>
-    
-        <div class="form-floating mb-3">
-            <!-- <label>User-ID</label> -->
-            <input [class.is-invalid]="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched"
-                formControlName="phoneNo" type="text" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">Phone No</label>
-            <div *ngIf="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched">
-                <small *ngIf="nomineeForm.get('phoneNo').errors?.required" class="text-danger">Phone No is
-                    required</small>
-            </div>
-        </div>
-    
-        <!-- <div class="form-floating mb-3">
-            <input [class.is-invalid]="beneficiaryForm.get('accountType').invalid && beneficiaryForm.get('accountType').touched"
-                formControlName="accountType" type="text" class="form-control" id="floatingInput" required>
-            <label for="floatingInput">IFSC</label>
-            <div *ngIf="beneficiaryForm.get('accountType').invalid && loginForm.get('accountType').touched">
-                <small *ngIf="beneficiaryForm.get('accountType').errors?.required" class="text-danger">Account Type is
-                    required</small>
-            </div>
-        </div> -->
-    
-        <div class="mb-3">
-            <div class="form-check">
-                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="MOTHER">
-                <label class="form-check-label" for="exampleRadios1">
-                    MOTHER
-                </label>
-            </div>
-            <div class="form-check">
-                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="FATHER">
-                <label class="form-check-label" for="exampleRadios2">
-                    FATHER
-                </label>
-            </div>
-            <div class="form-check">
-                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="DAUGHTER">
-                <label class="form-check-label" for="exampleRadios1">
-                    DAUGHTER
-                </label>
-            </div>
-            <div class="form-check">
-                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="SON">
-                <label class="form-check-label" for="exampleRadios2">
-                    SON
-                </label>
-            </div>
-            <div class="form-check">
-                <input formControlName="relation" class="form-check-input" type="radio" name="relation" value="SPOUSE">
-                <label class="form-check-label" for="exampleRadios2">
-                    SPOUSE
-                </label>
-            </div>
-        </div>
+        <h2 class='headings'>{{'Available Balance: ' + account.balance}}</h2>
+        <h4 class='headings'>{{'Account ID: ' + account.accountId}}</h4>
         
-    
-        <button [disabled]="!nomineeForm.valid" type="submit" class="w-100 btn btn-lg btn-dark">Add/Update nominee</button>
-    
-    </form>
-    
+        <h4 class='headings'>{{'Opened On: ' + account.dateOfOpening}}</h4>
+        <!-- <h1 class='headings'>{{account.dateOfOpening}}</h1> -->
+
+
     </section>
 
-    
 
 
 
@@ -143,102 +74,319 @@
 
 
 
-<!-- ---------------------------------------------------------------- -->
 
-<section id="#Beneficiaries">
+    <section class="container card" id="nominees">
 
-<h1>beneficiaries</h1>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
 
-<div *ngFor = "let b of account?.beneficiaries">
+        <h1 class='headings'>Nominees</h1>
 
-
-    <p>{{b | json}} </p>
-
-    <button (click) = "updateBeneficiary(b)" class="btn btn-lg btn-dark">update</button>
-
-    <button (click) = "removeBeneficiary(b)" class="btn btn-lg btn-dark">delete</button>
-
-
-</div>
-
-
-
-<form [formGroup]="beneficiaryForm" (ngSubmit)="addBeneficiary()">
-    <div class="form-floating mb-3">
-        <!-- <label>User-ID</label> -->
-        <input [class.is-invalid]="beneficiaryForm.get('beneficiaryId').invalid && beneficiaryForm.get('beneficiaryId').touched"
-            formControlName="beneficiaryId" type="number" class="form-control" id="floatingInput" required>
-        <label for="floatingInput">Beneficiary-ID</label>
-        <div *ngIf="beneficiaryForm.get('beneficiaryId').invalid && beneficiaryForm.get('beneficiaryId').touched">
-            <small *ngIf="beneficiaryForm.get('beneficiaryId').errors?.required" class="text-danger">User-Id is
-                required</small>
+        <div class="container nomineeCards">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class="col" *ngFor="let nominee of account?.nominees">
+                    <div class="card radius-15 bg-warning">
+                        <div class="card-body text-center">
+                            <div class="p-4 radius-15">
+                                <img *ngIf="!checkGender(nominee)"
+                                    src="https://bootdey.com/img/Content/avatar/avatar1.png" width="110" height="110"
+                                    class="rounded-circle shadow p-1 bg-white" alt="">
+                                <img *ngIf="checkGender(nominee)"
+                                    src="https://bootdey.com/img/Content/avatar/avatar3.png" width="110" height="110"
+                                    class="rounded-circle shadow p-1 bg-white" alt="">
+                                <h5 class="mb-0 mt-5 text-white">{{nominee.name}}</h5>
+                                <p class="mb-3 text-white">{{nominee.relation}}</p>
+                                <p class="mb-3 text-white">{{'Doc: ' + nominee.govtId}}</p>
+                                <!-- <p class="mb-3 text-white">{{nominee.govtIdType}}</p> -->
+                                <div class="list-inline contacts-social mt-3 mb-3">
+                                    <button (click)="updateNominee(nominee)" class="btn btn-lg btn-dark"
+                                        data-bs-toggle="modal" data-bs-target="#staticBackdropNominee">update</button>
+                                    <button (click)="removeNominee(nominee)" class="btn btn-lg btn-dark">delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-floating mb-3">
-        <!-- <label>User-ID</label> -->
-        <input [class.is-invalid]="beneficiaryForm.get('beneficiaryName').invalid && beneficiaryForm.get('beneficiaryName').touched"
-            formControlName="beneficiaryName" type="text" class="form-control" id="floatingInput" required>
-        <label for="floatingInput">Beneficiary Name</label>
-        <div *ngIf="beneficiaryForm.get('beneficiaryName').invalid && beneficiaryForm.get('beneficiaryName').touched">
-            <small *ngIf="beneficiaryForm.get('beneficiaryName').errors?.required" class="text-danger">Name is
-                required</small>
+
+        <button class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropNominee">Add a new
+            Nominee</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdropNominee" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add or Update Nominee</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form [formGroup]="nomineeForm" (ngSubmit)="addNominee()">
+                            <div class="form-floating mb-3">
+                                <!-- <label>User-ID</label> -->
+                                <input
+                                    [class.is-invalid]="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched"
+                                    formControlName="nomineeId" type="number" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">nominee-ID</label>
+                                <div
+                                    *ngIf="nomineeForm.get('nomineeId').invalid && nomineeForm.get('nomineeId').touched">
+                                    <small *ngIf="nomineeForm.get('nomineeId').errors?.required"
+                                        class="text-danger">User-Id
+                                        is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <!-- <label>User-ID</label> -->
+                                <input
+                                    [class.is-invalid]="nomineeForm.get('name').invalid && nomineeForm.get('name').touched"
+                                    formControlName="name" type="text" class="form-control" id="floatingInput" required>
+                                <label for="floatingInput">Nominee Name</label>
+                                <div *ngIf="nomineeForm.get('name').invalid && nomineeForm.get('name').touched">
+                                    <small *ngIf="nomineeForm.get('name').errors?.required" class="text-danger">Name is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <!-- <label>User-ID</label> -->
+                                <input
+                                    [class.is-invalid]="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched"
+                                    formControlName="govtId" type="text" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Govt ID</label>
+                                <div *ngIf="nomineeForm.get('govtId').invalid && nomineeForm.get('govtId').touched">
+                                    <small *ngIf="nomineeForm.get('govtId').errors?.required" class="text-danger">Govt
+                                        ID is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <!-- <label>User-ID</label> -->
+                                <input
+                                    [class.is-invalid]="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched"
+                                    formControlName="govtIdType" type="text" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Govt ID Type</label>
+                                <div
+                                    *ngIf="nomineeForm.get('govtIdType').invalid && nomineeForm.get('govtIdType').touched">
+                                    <small *ngIf="nomineeForm.get('govtIdType').errors?.required" class="text-danger">ID
+                                        Type is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <!-- <label>User-ID</label> -->
+                                <input
+                                    [class.is-invalid]="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched"
+                                    formControlName="phoneNo" type="text" class="form-control" id="floatingInput"
+                                    required>
+                                <label for="floatingInput">Phone No</label>
+                                <div *ngIf="nomineeForm.get('phoneNo').invalid && nomineeForm.get('phoneNo').touched">
+                                    <small *ngIf="nomineeForm.get('phoneNo').errors?.required" class="text-danger">Phone
+                                        No
+                                        is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input formControlName="relation" class="form-check-input" type="radio"
+                                        name="relation" value="MOTHER">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        MOTHER
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="relation" class="form-check-input" type="radio"
+                                        name="relation" value="FATHER">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        FATHER
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="relation" class="form-check-input" type="radio"
+                                        name="relation" value="DAUGHTER">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        DAUGHTER
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="relation" class="form-check-input" type="radio"
+                                        name="relation" value="SON">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        SON
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="relation" class="form-check-input" type="radio"
+                                        name="relation" value="SPOUSE">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        SPOUSE
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <button [disabled]="!nomineeForm.valid" type="submit"
+                                class="w-100 btn btn-lg btn-dark">Add/Update
+                                nominee</button>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            (click)="reloadCurrentPage()">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-floating mb-3">
-        <!-- <label>User-ID</label> -->
-        <input [class.is-invalid]="beneficiaryForm.get('beneficiaryAccNo').invalid && beneficiaryForm.get('beneficiaryAccNo').touched"
-            formControlName="beneficiaryAccNo" type="text" class="form-control" id="floatingInput" required>
-        <label for="floatingInput">Beneficiary Account No</label>
-        <div *ngIf="beneficiaryForm.get('beneficiaryAccNo').invalid && beneficiaryForm.get('beneficiaryAccNo').touched">
-            <small *ngIf="beneficiaryForm.get('beneficiaryAccNo').errors?.required" class="text-danger">Account Number is
-                required</small>
+
+    </section>
+
+
+    <section class="container card" id="beneficiaries">
+
+        <h1 class='headings'>Beneficiaries</h1>
+
+        <div class="container beneficiaryCards">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class="col" *ngFor="let beneficiary of account?.beneficiaries">
+                    <div class="card radius-15 bg-danger individualCard">
+                        <div class="card-body text-center">
+                            <div class="p-4 radius-15">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="110" height="110"
+                                    class="rounded-circle shadow p-1 bg-white" alt="">
+                                <h5 class="mb-0 mt-5 text-white">{{beneficiary.beneficiaryName}}</h5>
+                                <p class="mb-3 text-white">{{beneficiary.beneficiaryAccNo}}</p>
+                                <p class="mb-3 text-white">{{beneficiary.accountType}}</p>
+                                <!-- <p class="mb-3 text-white">{{nominee.govtIdType}}</p> -->
+                                <div class="list-inline contacts-social mt-3 mb-3">
+                                    <button (click)="updateBeneficiary(beneficiary)" class="btn btn-lg btn-dark"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdropBeneficiary">update</button>
+                                    <button (click)="removeBeneficiary(beneficiary)"
+                                        class="btn btn-lg btn-dark">delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-floating mb-3">
-        <!-- <label>User-ID</label> -->
-        <input [class.is-invalid]="beneficiaryForm.get('ifsc').invalid && beneficiaryForm.get('ifsc').touched"
-            formControlName="ifsc" type="text" class="form-control" id="floatingInput" required>
-        <label for="floatingInput">IFSC</label>
-        <div *ngIf="beneficiaryForm.get('ifsc').invalid && beneficiaryForm.get('ifsc').touched">
-            <small *ngIf="beneficiaryForm.get('ifsc').errors?.required" class="text-danger">IFSC Code is
-                required</small>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdropBeneficiary" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add or Update Beneficiary</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form [formGroup]="beneficiaryForm" (ngSubmit)="addBeneficiary()">
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="beneficiaryForm.get('beneficiaryId').invalid && beneficiaryForm.get('beneficiaryId').touched"
+                                    formControlName="beneficiaryId" type="number" class="form-control"
+                                    id="floatingInput" required>
+                                <label for="floatingInput">Beneficiary-ID</label>
+                                <div
+                                    *ngIf="beneficiaryForm.get('beneficiaryId').invalid && beneficiaryForm.get('beneficiaryId').touched">
+                                    <small *ngIf="beneficiaryForm.get('beneficiaryId').errors?.required"
+                                        class="text-danger">User-Id is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="beneficiaryForm.get('beneficiaryName').invalid && beneficiaryForm.get('beneficiaryName').touched"
+                                    formControlName="beneficiaryName" type="text" class="form-control"
+                                    id="floatingInput" required>
+                                <label for="floatingInput">Beneficiary Name</label>
+                                <div
+                                    *ngIf="beneficiaryForm.get('beneficiaryName').invalid && beneficiaryForm.get('beneficiaryName').touched">
+                                    <small *ngIf="beneficiaryForm.get('beneficiaryName').errors?.required"
+                                        class="text-danger">Name is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="beneficiaryForm.get('beneficiaryAccNo').invalid && beneficiaryForm.get('beneficiaryAccNo').touched"
+                                    formControlName="beneficiaryAccNo" type="text" class="form-control"
+                                    id="floatingInput" required>
+                                <label for="floatingInput">Beneficiary Account No</label>
+                                <div
+                                    *ngIf="beneficiaryForm.get('beneficiaryAccNo').invalid && beneficiaryForm.get('beneficiaryAccNo').touched">
+                                    <small *ngIf="beneficiaryForm.get('beneficiaryAccNo').errors?.required"
+                                        class="text-danger">Account
+                                        Number is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [class.is-invalid]="beneficiaryForm.get('ifsc').invalid && beneficiaryForm.get('ifsc').touched"
+                                    formControlName="ifsc" type="text" class="form-control" id="floatingInput" required>
+                                <label for="floatingInput">IFSC</label>
+                                <div *ngIf="beneficiaryForm.get('ifsc').invalid && beneficiaryForm.get('ifsc').touched">
+                                    <small *ngIf="beneficiaryForm.get('ifsc').errors?.required" class="text-danger">IFSC
+                                        Code is
+                                        required</small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input formControlName="accountType" class="form-check-input" type="radio"
+                                        name="accountType" value="SAVINGS">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Savings
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="accountType" class="form-check-input" type="radio"
+                                        name="accountType" value="CURRENT">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Current
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <button [disabled]="!beneficiaryForm.valid" type="submit"
+                                class="w-100 btn btn-lg btn-dark">Add/Update
+                                Beneficiary</button>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            (click)="reloadCurrentPage()">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- <div class="form-floating mb-3">
-        <input [class.is-invalid]="beneficiaryForm.get('accountType').invalid && beneficiaryForm.get('accountType').touched"
-            formControlName="accountType" type="text" class="form-control" id="floatingInput" required>
-        <label for="floatingInput">IFSC</label>
-        <div *ngIf="beneficiaryForm.get('accountType').invalid && loginForm.get('accountType').touched">
-            <small *ngIf="beneficiaryForm.get('accountType').errors?.required" class="text-danger">Account Type is
-                required</small>
-        </div>
-    </div> -->
+        <button class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdropBeneficiary">Add a new
+            Beneficiary</button>
 
-    <div class="mb-3">
-        <div class="form-check">
-            <input formControlName="accountType" class="form-check-input" type="radio" name="accountType" value="SAVINGS">
-            <label class="form-check-label" for="exampleRadios1">
-                Savings
-            </label>
-        </div>
-        <div class="form-check">
-            <input formControlName="accountType" class="form-check-input" type="radio" name="accountType" value="CURRENT">
-            <label class="form-check-label" for="exampleRadios2">
-                Current
-            </label>
-        </div>
-    </div>
-    
-
-    <button [disabled]="!beneficiaryForm.valid" type="submit" class="w-100 btn btn-lg btn-dark">Add/Update Beneficiary</button>
-
-</form>
-
-</section>
+    </section>
 
 
-
+</body>
