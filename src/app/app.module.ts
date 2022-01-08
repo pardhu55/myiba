@@ -16,6 +16,7 @@ import { CustomerViewComponent } from './admin/customer-view/customer-view.compo
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
 import { AdminCusTranComponent } from './admin/admin-cus-tran/admin-cus-tran.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AdminCusTranComponent } from './admin/admin-cus-tran/admin-cus-tran.com
     CustomerViewComponent,
     AdminActionsComponent,
     AdminCusTranComponent,
-    ProfileComponent
+    ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
